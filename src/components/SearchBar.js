@@ -11,6 +11,7 @@ const SearchBar = () => {
   const [isLoading, setLoading] = useState(false)
   const [selectedResult, setSelectedResult] = useState('')
   const searchTimer = useRef();
+  const queryRef = useRef(searchQuery)
   const dispatch = useDispatch()
 
   const handleResultSelect = (e, { result }) => {
@@ -21,17 +22,18 @@ const SearchBar = () => {
   }
 
   const handleQueryChange = (e, { value }) => {
+    queryRef.current = value
+    clearTimeout(searchTimer.current)
+    setQuery(value)
     setLoading(true)
     setSelectedResult('')
-    setQuery(value)
-    if (searchTimer.current) clearTimeout(searchTimer.current)
     searchTimer.current = setTimeout(async () => {
-      const options = await autoCompleteLocation(searchQuery);
+      console.log(queryRef.current)
+      const options = await autoCompleteLocation(queryRef.current);
       setResults(options.map(({ Key, Type, LocalizedName, Country }) => ({ locationKey: Key, type: Type, cityName: LocalizedName, countryName: Country.LocalizedName, countryCode: Country.ID })))
       setLoading(false)
     }, 600)
   }
-
 
   return (
     <Search

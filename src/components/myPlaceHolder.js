@@ -8,7 +8,7 @@ const MyPlaceHolder = () => (
     </Grid.Column>
     <Grid.Row centered>
       <Grid.Column>
-        <Placeholder style={{ height: 200, width: 200 }} />
+        <Placeholder style={{ height: 300, width: 300 }} />
       </Grid.Column>
     </Grid.Row>
     <Grid.Column width={8} style={{ paddingTop: '2em' }}>
@@ -16,6 +16,7 @@ const MyPlaceHolder = () => (
       <Placeholder.Line length="full" />
       <Placeholder.Line length="very long" />
       <Placeholder.Line length="full" />
+      <Placeholder.Line length="very long" />
       <Placeholder.Line length="very long" />
       </Placeholder>
     </Grid.Column>

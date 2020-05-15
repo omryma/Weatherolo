@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const getLocation = async () => {
   const response = await fetch('http://ip-api.com/json/?fields=16593')
     .catch((e) => {
